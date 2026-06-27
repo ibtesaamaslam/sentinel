@@ -29,8 +29,8 @@ describe('Scanner', () => {
 
   it('should scan a directory and return results', async () => {
     const scanner = new Scanner(testConfig);
-    // Scan the core package which has valid TypeScript
-    const result = await scanner.scan('./packages/core');
+    // Scan the current package's src directory for valid TypeScript files
+    const result = await scanner.scan('./src');
     expect(result.filesScanned).toBeGreaterThan(0);
     expect(result.findings).toBeDefined();
     expect(result.summary).toBeDefined();
@@ -38,16 +38,14 @@ describe('Scanner', () => {
 
   it('should detect placeholder patterns', async () => {
     const scanner = new Scanner(testConfig);
-    const result = await scanner.scan('./packages/core');
+    const result = await scanner.scan('./src');
     const placeholderFindings = result.findings.filter(f => f.category === 'placeholder' || f.category === 'todo');
-    // May or may not find placeholders - just verify the scan ran
     expect(Array.isArray(placeholderFindings)).toBe(true);
   }, 10000);
 
   it('should detect secrets', async () => {
     const scanner = new Scanner(testConfig);
-    // Scan test directory - secrets shouldn't be in our code
-    const result = await scanner.scan('./packages/core');
+    const result = await scanner.scan('./src');
     const secretFindings = result.findings.filter(f => f.category === 'secret');
     expect(Array.isArray(secretFindings)).toBe(true);
   }, 10000);
@@ -58,7 +56,7 @@ describe('Scanner', () => {
     controller.abort();
 
     await expect(
-      scanner.scan('./packages/core', {
+      scanner.scan('./src', {
         config: testConfig,
         signal: controller.signal,
       }),
@@ -67,7 +65,7 @@ describe('Scanner', () => {
 
   it('should detect bugs in code with issues', async () => {
     const scanner = new Scanner(testConfig);
-    const result = await scanner.scan('./packages/core');
+    const result = await scanner.scan('./src');
     const bugFindings = result.findings.filter(f => f.category === 'bug');
     expect(Array.isArray(bugFindings)).toBe(true);
   }, 10000);

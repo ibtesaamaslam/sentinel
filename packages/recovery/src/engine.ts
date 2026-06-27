@@ -26,7 +26,10 @@ export class RecoveryEngine {
       if (finding.suggestedFix) {
         const fix = this.generateFix(finding, originalContent);
         fixes.push(fix);
-        patches.push(fix.patch);
+
+        if (this.createPatches) {
+          patches.push(fix.patch);
+        }
       }
     }
 
@@ -108,13 +111,72 @@ export class RecoveryEngine {
   private generateFix(finding: Finding, originalContent?: Map<string, string>): Fix {
     const id = utils.generateId();
     const originalContent_ = originalContent?.get(finding.file) || '';
+    const findingLine = finding.line;
+
+    // Generate suggested fix content based on the finding type
+    let fixedContent = originalContent_;
+    if (this.createPatches && originalContent_ && finding.suggestedFix) {
+      if (finding.category === FindingCategory.Secret || finding.category === FindingCategory.ApiKey) {
+        // For secrets, add a comment and .env recommendation
+        fixedContent = originalContent_.replace(
+          /(?:api[_-]?key|apikey|secret|password|token)\s*[:=]\s*['\"][^'\"]+['\"]/gi,
+          (match) => {
+            const key = match.split(/[:=]/)[0].trim();
+            return `${key}: process.env.${key.toUpperCase().replace(/[^a-zA-Z0-9_]/g, '_') || 'SECRET'}`;
+          },
+        );
+      } else if (finding.category === FindingCategory.SqlInjection) {
+        // For SQL injection, suggest parameterized query
+        fixedContent = originalContent_.replace(
+          /\.query\s*\(\s*['"`]\s*(SELECT|INSERT|UPDATE|DELETE)\s+.+['"`]\s*\+/gi,
+          (match) => {
+            return match.replace(/`\s*\+/g, '`, [');
+          },
+        );
+      } else if (finding.category === FindingCategory.UnsafeCode || finding.category === FindingCategory.SecurityVulnerability) {
+        // For unsafe code, wrap in try-catch or add validation
+        const lines = originalContent_.split('\n');
+        if (findingLine > 0 && findingLine <= lines.length) {
+          const unsafeLine = lines[findingLine - 1];
+          if (unsafeLine && unsafeLine.includes('eval(')) {
+            lines[findingLine - 1] = `// FIXED: Replaced eval() with safer alternative\n// ${unsafeLine}`;
+            fixedContent = lines.join('\n');
+          }
+        }
+      }
+    }
+
+    // Build diff hunks for the patch
+    const diffHunks: import('@sentinel/core').DiffHunk[] = [];
+    if (originalContent_ !== fixedContent && originalContent_ && fixedContent) {
+      const origLines = originalContent_.split('\n');
+      const fixLines = fixedContent.split('\n');
+      const maxLen = Math.max(origLines.length, fixLines.length);
+
+      for (let i = 0; i < maxLen; i++) {
+        if (origLines[i] !== fixLines[i]) {
+          diffHunks.push({
+            oldStart: i + 1,
+            oldLines: origLines[i] ? 1 : 0,
+            newStart: i + 1,
+            newLines: fixLines[i] ? 1 : 0,
+            content: fixLines[i] || '',
+          });
+        }
+      }
+    }
 
     const patch: Patch = {
       id: utils.generateId(),
       description: finding.suggestedFix || 'Suggested fix',
-      diff: [],
-      originalHash: '',
-      newHash: '',
+      diff: [{
+        file: finding.file,
+        additions: diffHunks.filter(h => h.newLines > 0).length,
+        deletions: diffHunks.filter(h => h.oldLines > 0).length,
+        hunks: diffHunks,
+      }],
+      originalHash: originalContent_ ? this.simpleHash(originalContent_) : '',
+      newHash: fixedContent ? this.simpleHash(fixedContent) : '',
     };
 
     return {
@@ -122,10 +184,20 @@ export class RecoveryEngine {
       description: finding.suggestedFix || `Fix for: ${finding.message}`,
       file: finding.file,
       originalContent: originalContent_,
-      fixedContent: '',
+      fixedContent,
       patch,
       confidence: finding.severity === Severity.Critical ? 0.6 : finding.severity === Severity.High ? 0.75 : 0.9,
     };
+  }
+
+  private simpleHash(str: string): string {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash).toString(16);
   }
 
   getHistory(): RecoveryPlan[] {

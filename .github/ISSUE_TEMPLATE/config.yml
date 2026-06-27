@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Sentinel Documentation
+    url: https://sentinel.dev/docs
+    about: Check the documentation before opening an issue
+  - name: GitHub Discussions
+    url: https://github.com/sentinel-ai/sentinel/discussions
+    about: Ask questions and discuss features

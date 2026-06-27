@@ -27,35 +27,224 @@ importers:
         specifier: ^2.0.5
         version: 2.1.9(@types/node@22.20.0)
 
-  packages/cli:
+  apps/cli:
     dependencies:
+      '@sentinel/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@sentinel/core':
         specifier: workspace:*
-        version: link:../core
+        version: link:../../packages/core
       '@sentinel/firewall':
         specifier: workspace:*
-        version: link:../firewall
+        version: link:../../packages/firewall
       '@sentinel/guardian':
         specifier: workspace:*
-        version: link:../guardian
+        version: link:../../packages/guardian
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
       '@sentinel/monitor':
         specifier: workspace:*
-        version: link:../monitor
+        version: link:../../packages/monitor
       '@sentinel/recovery':
         specifier: workspace:*
-        version: link:../recovery
+        version: link:../../packages/recovery
       '@sentinel/reports':
         specifier: workspace:*
-        version: link:../reports
+        version: link:../../packages/reports
       '@sentinel/scanner':
         specifier: workspace:*
-        version: link:../scanner
+        version: link:../../packages/scanner
       commander:
         specifier: ^12.1.0
         version: 12.1.0
       picocolors:
         specifier: ^1.0.1
         version: 1.1.1
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  apps/dashboard:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@sentinel/reports':
+        specifier: workspace:*
+        version: link:../../packages/reports
+      '@sentinel/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  apps/desktop:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@sentinel/monitor':
+        specifier: workspace:*
+        version: link:../../packages/monitor
+      '@sentinel/scanner':
+        specifier: workspace:*
+        version: link:../../packages/scanner
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  apps/vscode-extension:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@sentinel/monitor':
+        specifier: workspace:*
+        version: link:../../packages/monitor
+      '@sentinel/scanner':
+        specifier: workspace:*
+        version: link:../../packages/scanner
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/ai:
+    dependencies:
+      '@sentinel/config':
+        specifier: workspace:*
+        version: link:../config
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../logger
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/analytics:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../logger
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/architecture:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/graph':
+        specifier: workspace:*
+        version: link:../graph
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/ast:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/parser':
+        specifier: workspace:*
+        version: link:../parser
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/common:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/config:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../logger
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: ^22.5.0
@@ -80,7 +269,42 @@ importers:
         specifier: ^2.0.5
         version: 2.1.9(@types/node@22.20.0)
 
+  packages/dependency:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/graph':
+        specifier: workspace:*
+        version: link:../graph
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
   packages/firewall:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/graph:
     dependencies:
       '@sentinel/core':
         specifier: workspace:*
@@ -121,6 +345,25 @@ importers:
         specifier: ^2.0.5
         version: 2.1.9(@types/node@22.20.0)
 
+  packages/logger:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      picocolors:
+        specifier: ^1.0.1
+        version: 1.1.1
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
   packages/monitor:
     dependencies:
       '@sentinel/core':
@@ -132,6 +375,47 @@ importers:
       chokidar:
         specifier: ^4.0.0
         version: 4.0.3
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/parser:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../logger
+      ignore:
+        specifier: ^5.3.1
+        version: 5.3.2
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/performance:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/parser':
+        specifier: workspace:*
+        version: link:../parser
     devDependencies:
       '@types/node':
         specifier: ^22.5.0
@@ -162,6 +446,47 @@ importers:
         specifier: ^2.0.5
         version: 2.1.9(@types/node@22.20.0)
 
+  packages/plugins:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@sentinel/plugin-sdk':
+        specifier: workspace:*
+        version: link:../plugin-sdk
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/policy:
+    dependencies:
+      '@sentinel/config':
+        specifier: workspace:*
+        version: link:../config
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
   packages/recovery:
     dependencies:
       '@sentinel/core':
@@ -170,6 +495,25 @@ importers:
       '@sentinel/scanner':
         specifier: workspace:*
         version: link:../scanner
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/reporting:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/reports':
+        specifier: workspace:*
+        version: link:../reports
     devDependencies:
       '@types/node':
         specifier: ^22.5.0
@@ -217,6 +561,92 @@ importers:
       picocolors:
         specifier: ^1.0.1
         version: 1.1.1
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/security:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/parser':
+        specifier: workspace:*
+        version: link:../parser
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/telemetry:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sentinel/logger':
+        specifier: workspace:*
+        version: link:../logger
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/testing:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/ui:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.3
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.9(@types/node@22.20.0)
+
+  packages/utils:
+    dependencies:
+      '@sentinel/core':
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       '@types/node':
         specifier: ^22.5.0

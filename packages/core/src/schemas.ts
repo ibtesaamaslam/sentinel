@@ -58,8 +58,8 @@ export const scanResultSchema = z.object({
 
 // ─── Config Schemas ──────────────────────────────────────────────
 export const scanConfigSchema = z.object({
-  include: z.array(z.string()),
-  exclude: z.array(z.string()),
+  include: z.array(z.string()).default(['**/*']),
+  exclude: z.array(z.string()).default(['node_modules', '.git', 'dist', 'build']),
   maxFileSize: z.number().positive().default(1_000_000),
   parallel: z.boolean().default(true),
   workers: z.number().int().positive().default(4),
@@ -119,13 +119,13 @@ export const reportConfigSchema = z.object({
 
 export const sentinelConfigSchema = z.object({
   rootDir: z.string(),
-  scan: scanConfigSchema.default({} as any),
-  monitor: monitorConfigSchema.default({} as any),
-  guardian: guardianConfigSchema.default({} as any),
-  firewall: firewallConfigSchema.default({} as any),
-  recovery: recoveryConfigSchema.default({} as any),
-  plugins: pluginConfigSchema.default({} as any),
-  reports: reportConfigSchema.default({} as any),
+  scan: scanConfigSchema.default({}),
+  monitor: monitorConfigSchema.default({}),
+  guardian: guardianConfigSchema.default({}),
+  firewall: firewallConfigSchema.default({}),
+  recovery: recoveryConfigSchema.default({}),
+  plugins: pluginConfigSchema.default({}),
+  reports: reportConfigSchema.default({}),
 });
 
 // ─── Event Schema ────────────────────────────────────────────────

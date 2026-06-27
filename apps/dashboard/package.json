@@ -1,0 +1,13 @@
+{
+  "name": "@sentinel/dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sentinel Dashboard - Web-based UI for scan results, monitoring, and policy management",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": { "build": "tsc", "dev": "tsc --watch", "typecheck": "tsc --noEmit", "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"", "test": "vitest run" },
+  "dependencies": { "@sentinel/core": "workspace:*", "@sentinel/reports": "workspace:*", "@sentinel/ui": "workspace:*" },
+  "devDependencies": { "@types/node": "^22.5.0", "typescript": "^5.5.4", "vitest": "^2.0.5" }
+}

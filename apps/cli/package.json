@@ -1,0 +1,27 @@
+{
+  "name": "@sentinel/cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sentinel CLI - AI Software Engineering Safety Platform command-line interface",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": { "sentinel": "./dist/index.js" },
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
+  "scripts": { "build": "tsc", "dev": "tsc --watch", "typecheck": "tsc --noEmit", "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"", "test": "vitest run", "test:coverage": "vitest run --coverage" },
+  "dependencies": {
+    "@sentinel/core": "workspace:*",
+    "@sentinel/scanner": "workspace:*",
+    "@sentinel/monitor": "workspace:*",
+    "@sentinel/guardian": "workspace:*",
+    "@sentinel/firewall": "workspace:*",
+    "@sentinel/recovery": "workspace:*",
+    "@sentinel/reports": "workspace:*",
+    "@sentinel/config": "workspace:*",
+    "@sentinel/logger": "workspace:*",
+    "commander": "^12.1.0",
+    "picocolors": "^1.0.1"
+  },
+  "devDependencies": { "@types/node": "^22.5.0", "typescript": "^5.5.4", "vitest": "^2.0.5" }
+}

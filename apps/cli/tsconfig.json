@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "outDir": "dist", "rootDir": "src" },
+  "include": ["src"],
+  "references": [
+    { "path": "../../packages/core" },
+    { "path": "../../packages/scanner" },
+    { "path": "../../packages/monitor" },
+    { "path": "../../packages/guardian" },
+    { "path": "../../packages/firewall" },
+    { "path": "../../packages/recovery" },
+    { "path": "../../packages/reports" },
+    { "path": "../../packages/config" },
+    { "path": "../../packages/logger" }
+  ]
+}

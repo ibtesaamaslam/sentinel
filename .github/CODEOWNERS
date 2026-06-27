@@ -1,0 +1,16 @@
+# Default owners
+* @sentinel-ai/core
+
+# Core packages
+/packages/core/ @sentinel-ai/core
+/packages/scanner/ @sentinel-ai/scanner
+/packages/monitor/ @sentinel-ai/monitor
+/packages/guardian/ @sentinel-ai/guardian
+/packages/firewall/ @sentinel-ai/firewall
+/packages/recovery/ @sentinel-ai/recovery
+
+# CLI
+/apps/cli/ @sentinel-ai/cli
+
+# Documentation
+/docs/ @sentinel-ai/docs
