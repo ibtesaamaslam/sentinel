@@ -9,7 +9,7 @@
 
 <div align="center">
 
-### AI Software Engineering Safety Platform
+### 🛡️ AI Software Engineering Safety Platform
 
 **Secure · Verify · Monitor · Protect · Recover**
 
