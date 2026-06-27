@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  sentinel:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+    command: scan /workspace --format terminal --format html --output /workspace/sentinel-reports

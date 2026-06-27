@@ -1,0 +1,37 @@
+{
+  "name": "@sentinel/scanner",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sentinel Repository Scan Engine - Deep static analysis for entire repositories",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@sentinel/core": "workspace:*",
+    "@sentinel/plugin-sdk": "workspace:*",
+    "chokidar": "^4.0.0",
+    "ignore": "^5.3.1",
+    "picocolors": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
