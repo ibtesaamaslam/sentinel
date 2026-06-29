@@ -15,8 +15,8 @@ importers:
         specifier: ^22.5.0
         version: 22.20.0
       prettier:
-        specifier: ^3.3.3
-        version: 3.8.5
+        specifier: ^3.9.3
+        version: 3.9.3
       turbo:
         specifier: ^2.1.0
         version: 2.10.0
@@ -1375,8 +1375,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.8.5:
-    resolution: {integrity: sha512-zxcTTCedNGJM4R8sj/Cq/F0W/c4iE0afWBcBwMTRtw4WHYP9TWkYjdiH3npPRUYsXQCPR0hTU9yjovOu+E6EQA==}
+  prettier@3.9.3:
+    resolution: {integrity: sha512-HWmu+K+zvHNpaMfSnYeqdqrDbR16cuIXaPx8WoHaviQkDJh1/0BNtOZmHVQI5jc3wXv0H1yXc9wjvFdXh+n3hQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2237,7 +2237,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.8.5: {}
+  prettier@3.9.3: {}
 
   quansync@0.2.11: {}
 
