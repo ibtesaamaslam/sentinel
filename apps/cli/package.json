@@ -20,7 +20,7 @@
     "@sentinel/reports": "workspace:*",
     "@sentinel/config": "workspace:*",
     "@sentinel/logger": "workspace:*",
-    "commander": "^12.1.0",
+    "commander": "^15.0.0",
     "picocolors": "^1.0.1"
   },
   "devDependencies": { "@types/node": "^22.5.0", "typescript": "^5.5.4", "vitest": "^2.0.5" }
