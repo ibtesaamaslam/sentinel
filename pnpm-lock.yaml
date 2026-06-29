@@ -329,8 +329,8 @@ importers:
         specifier: workspace:*
         version: link:../scanner
       diff:
-        specifier: ^7.0.0
-        version: 7.0.0
+        specifier: ^9.0.0
+        version: 9.0.0
     devDependencies:
       '@types/diff':
         specifier: ^6.0.0
@@ -1157,8 +1157,8 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
 
-  diff@7.0.0:
-    resolution: {integrity: sha512-PJWHUb1RFevKCwaFA9RlG5tCd+FO5iRh9A8HEtkmBH2Li03iJriB6m6JIN4rGz3K3JLawI7/veA1xzRKP6ISBw==}
+  diff@9.0.0:
+    resolution: {integrity: sha512-svtcdpS8CgJyqAjEQIXdb3OjhFVVYjzGAPO8WGCmRbrml64SPw/jJD4GoE98aR7r25A0XcgrK3F02yw9R/vhQw==}
     engines: {node: '>=0.3.1'}
 
   dir-glob@3.0.1:
@@ -2029,7 +2029,7 @@ snapshots:
 
   detect-indent@6.1.0: {}
 
-  diff@7.0.0: {}
+  diff@9.0.0: {}
 
   dir-glob@3.0.1:
     dependencies:
