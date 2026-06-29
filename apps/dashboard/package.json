@@ -9,5 +9,5 @@
   "types": "./dist/index.d.ts",
   "scripts": { "build": "tsc", "dev": "tsc --watch", "typecheck": "tsc --noEmit", "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"", "test": "vitest run" },
   "dependencies": { "@sentinel/core": "workspace:*", "@sentinel/reports": "workspace:*", "@sentinel/ui": "workspace:*" },
-  "devDependencies": { "@types/node": "^22.5.0", "typescript": "^5.5.4", "vitest": "^2.0.5" }
+  "devDependencies": { "@types/node": "^26.0.1", "typescript": "^6.0.3", "vitest": "^4.1.9" }
 }
