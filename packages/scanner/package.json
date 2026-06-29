@@ -26,7 +26,7 @@
     "@sentinel/core": "workspace:*",
     "@sentinel/plugin-sdk": "workspace:*",
     "chokidar": "^4.0.0",
-    "ignore": "^5.3.1",
+    "ignore": "^7.0.5",
     "picocolors": "^1.0.1"
   },
   "devDependencies": {
